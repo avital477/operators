@@ -27,6 +27,23 @@ public:
     CircularInt& operator ++ ();
     
     int nirmul(int x, int start, int end);
+    //global
+     friend istream& operator <<(istream& is, const CircularInt& b);
+    friend ostream& operator <<(ostream& os, const CircularInt& b);
+
+
+friend const CircularInt operator / (const int& a,const CircularInt& div);
+friend const CircularInt operator / (const CircularInt& a,const int& div);
+friend const CircularInt operator / (const CircularInt& a,const CircularInt& div);
+
+
+friend const CircularInt operator + (const CircularInt& a,const CircularInt& b);
+friend const CircularInt operator + (const int a,const CircularInt& b);
+friend const CircularInt operator + (const CircularInt& b,const int a);
+
+friend const CircularInt operator - (const int a,const CircularInt& other);
+friend const CircularInt operator - (const CircularInt& other, const int a);
+friend const CircularInt operator - (const CircularInt& a, const CircularInt& b);
 
 
 };
