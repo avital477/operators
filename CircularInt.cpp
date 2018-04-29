@@ -257,14 +257,14 @@ bool operator== (const CircularInt& a, const CircularInt& b){
         return false;
 }
 
-bool operator == (const int& a, const CircularInt& b){
-    if(a==b.current)
+bool operator == (const CircularInt& a, const int& b){
+    if(b==a.current)
     return true;
     else return false;
 }
 
 bool operator == (const int& a, const CircularInt& b){
-    if(b==a.current)
+    if(b.current==a)
     return true;
     else return false;
 }
@@ -307,25 +307,25 @@ bool operator < (const CircularInt& a, const int& b){
 
 
 bool operator >= (const CircularInt& a, const CircularInt& b){
-    return (a==b)|| (a>b);
+    return (a==b || a>b);
 }
 
 bool operator >= (const int& a, const CircularInt& b){
-    return (a==b)|| (a>b);
+    return (a==b || a>b);
 }
 
 bool operator >= (const CircularInt& a, const int& b){
-    return (a==b)|| (a>b);
+    return (a==b || a>b);
 }
 
 bool operator <= (const CircularInt& a, const CircularInt& b){
-    return (a==b)|| (a<b);
+    return (a==b || a<b);
 }
 
 bool operator <= (const int& a, const CircularInt& b){
-    return (a==b)|| (a<b);
+    return (a==b || a<b);
 }
 
 bool operator <= (const CircularInt& a, const int& b){
-    return (a==b)|| (a<b);
+    return (a==b || a<b);
 }

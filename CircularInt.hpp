@@ -48,7 +48,7 @@ friend const CircularInt operator - (const CircularInt& other, const int a);
 friend const CircularInt operator - (const CircularInt& a, const CircularInt& b);
 
 friend bool operator == (const CircularInt& a, const CircularInt& b);
-friend bool operator == (const int& a, const CircularInt& b);
+friend bool operator == (const CircularInt& a, const int& b);
 friend bool operator == (const int& a, const CircularInt& b);
 friend bool operator > (const CircularInt& a, const CircularInt& b);
 friend bool operator > (const int& a, const CircularInt& b);
@@ -84,7 +84,7 @@ const CircularInt operator - (const CircularInt& a, const CircularInt& b);
 
 
 bool operator == (const CircularInt& a, const CircularInt& b);
-bool operator == (const int& a, const CircularInt& b);
+bool operator == (const CircularInt& a, const int& b);
 bool operator == (const int& a, const CircularInt& b);
 bool operator > (const CircularInt& a, const CircularInt& b);
 bool operator > (const int& a, const CircularInt& b);
