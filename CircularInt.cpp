@@ -250,3 +250,81 @@ const CircularInt operator * (const CircularInt& a, const int& b){
 
 
 
+bool operator == (const CircularInt& a, const CircularInt& b){
+    if((a.start==b.start)&&(a.end==b.end)&&(a.current==b.current))
+    return true;
+    else return false;
+}
+
+bool operator == (const int& a, const CircularInt& b){
+    if(a==b.current)
+    return true;
+    else return false;
+}
+
+bool operator == (const int& a, const CircularInt& b){
+    if(b==a.current)
+    return true;
+    else return false;
+}
+
+bool operator > (const CircularInt& a, const CircularInt& b){
+    if(a.current>b.current)
+    return true;
+    else return false;
+}
+
+bool operator > (const int& a, const CircularInt& b){
+    if(a>b.current)
+    return true;
+    else return false;
+}
+
+bool operator > (const CircularInt& a, const int& b){
+    if(a.current>b)
+    return true;
+    else return false;
+}
+
+bool operator < (const CircularInt& a, const CircularInt& b){
+    if(a.current<b.current)
+    return true;
+    else return false;
+}
+
+bool operator < (const int& a, const CircularInt& b){
+    if(a<b.current)
+    return true;
+    else return false;
+}
+
+bool operator < (const CircularInt& a, const int& b){
+    if(a.current<b)
+    return true;
+    else return false;
+}
+
+
+bool operator >= (const CircularInt& a, const CircularInt& b){
+    return (a==b)|| (a>b);
+}
+
+bool operator >= (const int& a, const CircularInt& b){
+    return (a==b)|| (a>b);
+}
+
+bool operator >= (const CircularInt& a, const int& b){
+    return (a==b)|| (a>b);
+}
+
+bool operator <= (const CircularInt& a, const CircularInt& b){
+    return (a==b)|| (a<b);
+}
+
+bool operator <= (const int& a, const CircularInt& b){
+    return (a==b)|| (a<b);
+}
+
+bool operator <= (const CircularInt& a, const int& b){
+    return (a==b)|| (a<b);
+}
