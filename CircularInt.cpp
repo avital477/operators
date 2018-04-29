@@ -148,7 +148,7 @@ const CircularInt operator / (const CircularInt& a,const CircularInt& div){
  istream& operator <<(istream& is, const CircularInt& b){
      int temp;
      is>> temp;
-     b.current =nirmul( temp, b.start, b.end);
+     b.current =b.nirmul( temp, b.start, b.end);
      return is;
  }
 
