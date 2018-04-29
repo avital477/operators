@@ -269,6 +269,18 @@ bool operator == (const int& a, const CircularInt& b){
     else return false;
 }
 
+bool operator!= (const CircularInt& a, const CircularInt& b){
+    return !(a==b);
+}
+
+bool operator != (const CircularInt& a, const int& b){
+    return !(a==b);
+}
+
+bool operator != (const int& a, const CircularInt& b){
+    return !(a==b);
+}
+
 bool operator > (const CircularInt& a, const CircularInt& b){
     if(a.current>b.current)
     return true;
