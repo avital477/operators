@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 #include "CircularInt.hpp"
-
+#include <string>
 
 
 int CircularInt::nirmul(int x, int start, int end){
@@ -250,10 +250,11 @@ const CircularInt operator * (const CircularInt& a, const int& b){
 
 
 
-bool operator == (const CircularInt& a, const CircularInt& b){
+bool operator== (const CircularInt& a, const CircularInt& b){
     if((a.start==b.start)&&(a.end==b.end)&&(a.current==b.current))
-    return true;
-    else return false;
+        return true;
+    else 
+        return false;
 }
 
 bool operator == (const int& a, const CircularInt& b){
