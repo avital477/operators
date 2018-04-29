@@ -66,7 +66,7 @@ CircularInt& CircularInt::operator /=(const CircularInt& div) {
        for(int i=this->start; i<=this->end; i++){
            if((div.current*i)==this->current){
                 this->current=i;
-                return this;
+                return *this;
            }
        }
     }
@@ -84,7 +84,7 @@ CircularInt& CircularInt::operator /=(const int& div) {
        for(int i=this->start; i<=this->end; i++){
            if((div*i)==this->current){
                 this->current=i;
-                return this;
+                return *this;
            }
        }
     }
