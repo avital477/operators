@@ -44,8 +44,8 @@ CircularInt& CircularInt :: operator -= (const CircularInt& b){
 
 
  CircularInt& CircularInt::operator-=(const int& other) {
-      this->current =nirmul(this->current-other.current, this->start, this->end);
-         return *this;
+    this->current =nirmul(this->current-other, this->start, this->end);
+    return *this;
  }
 
 
@@ -145,7 +145,7 @@ const CircularInt operator / (const CircularInt& a,const CircularInt& div){
      return os;
  }
 
- istream& operator <<(istream& os, const CircularInt& b){
+ istream& operator <<(istream& is, const CircularInt& b){
      int temp;
      is>> temp;
      b.current =nirmul( temp, b.start, b.end);

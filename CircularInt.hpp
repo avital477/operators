@@ -24,14 +24,14 @@ public:
 
     int operator-();
     int operator++(int);     
-     CircularInt& operator ++ ();
+    CircularInt& operator ++ ();
     
     int nirmul(int x, int start, int end);
 
 
 };
 
-istream& operator <<(istream& os, const CircularInt& b);
+istream& operator <<(istream& is, const CircularInt& b);
 ostream& operator <<(ostream& os, const CircularInt& b);
 
 
