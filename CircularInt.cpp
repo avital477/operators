@@ -113,7 +113,7 @@ int CircularInt::operator--(int){
     this->current =nirmul(this->current- 1, this->start, this->end);
     return tmp;
 }
-CircularInt& CircularInt::operator-(){
+CircularInt& CircularInt::operator--(){
      this->current =nirmul(this->current- 1, this->start, this->end);
     return *this;
 }
