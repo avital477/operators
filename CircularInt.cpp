@@ -18,7 +18,12 @@ using namespace std;
         return *this;
  }
 
- CircularInt& CircularInt::operator-=(const int& other) {}
+ CircularInt& CircularInt::operator-=(const int& other) {
+     this->current =this->current- other;
+         if (this->current > this->end){
+                 this->current = this->current % (this->end - this->start +1);
+         }
+ }
 CircularInt& CircularInt::operator*=(const int& mult) {
     this->current=this->current*mult;
    if (this->current > this->end){
