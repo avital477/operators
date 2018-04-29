@@ -38,4 +38,4 @@ public:
  const CircularInt operator+(const int a,const CircularInt& b);
   const CircularInt operator / (const CircularInt& a,const int& div);
   const CircularInt operator - (const int a,const CircularInt& other);
-const CircularInt operator + (const CircularInt& a, const CircularInt& b);
+const CircularInt operator + (const CircularInt& a,const CircularInt& b);
