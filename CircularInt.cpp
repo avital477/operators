@@ -99,11 +99,22 @@ CircularInt& CircularInt::operator /=(const int& div) {
 
 
 int CircularInt::operator++(int){
+    int tmp= this->current;
     this->current =nirmul(this->current+ 1, this->start, this->end);
-    return this->current;
+    return tmp;
 }
 CircularInt& CircularInt::operator++(){
      this->current =nirmul(this->current+ 1, this->start, this->end);
+    return *this;
+}
+
+int CircularInt::operator--(int){
+    int tmp= this->current;
+    this->current =nirmul(this->current- 1, this->start, this->end);
+    return tmp;
+}
+CircularInt& CircularInt::operator-(){
+     this->current =nirmul(this->current- 1, this->start, this->end);
     return *this;
 }
 

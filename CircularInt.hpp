@@ -27,6 +27,8 @@ public:
     int operator-();
     int operator++(int);     
     CircularInt& operator ++ ();
+    int operator--(int);     
+    CircularInt& operator -- ();
     
     int nirmul(int x, int start, int end);
     //global
