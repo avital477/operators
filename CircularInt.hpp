@@ -48,7 +48,7 @@ friend const CircularInt operator - (const CircularInt& a, const CircularInt& b)
 
 };
 
-istream& operator <<(istream& is, const CircularInt& b);
+istream& operator >>(istream& is, const CircularInt& b);
 ostream& operator <<(ostream& os, const CircularInt& b);
 
 
