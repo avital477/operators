@@ -60,6 +60,44 @@ CircularInt& CircularInt::operator*=(const CircularInt& other) {
 }
 
 
+CircularInt& CircularInt::operator /=(const CircularInt& div) {
+    if(div.current!=0){
+       
+       for(int i=this->start; i<=this->end; i++){
+           if((div.current*i)==this->current){
+                this->current=i;
+                return this;
+           }
+       }
+    }
+    string ans;
+    if(div.current==0)
+        ans="div=0";
+    else{
+        ans="There is no number x in {"+std::to_string(this->start)+","+std::to_string(this->end)+"} such that x*"+std::to_string(div.current)+"="+std::to_string(this->current); 
+    }
+    throw ans;
+}
+CircularInt& CircularInt::operator /=(const int& div) {
+    if(div!=0){
+       
+       for(int i=this->start; i<=this->end; i++){
+           if((div*i)==this->current){
+                this->current=i;
+                return this;
+           }
+       }
+    }
+    string ans;
+    if(div==0)
+        ans="div=0";
+    else{
+        ans="There is no number x in {"+std::to_string(this->start)+","+std::to_string(this->end)+"} such that x*"+std::to_string(div)+"="+std::to_string(this->current); 
+    }
+    throw ans;
+}
+
+
 int CircularInt::operator++(int){
     this->current =nirmul(this->current+ 1, this->start, this->end);
     return this->current;

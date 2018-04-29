@@ -21,6 +21,8 @@ public:
      CircularInt&  operator -= (const CircularInt& b);
     CircularInt& operator*=(const int& mult);
     CircularInt& operator*=(const CircularInt& other);
+    CircularInt& operator /=(const int& div);
+    CircularInt& operator /=(const CircularInt& div); 
 
     int operator-();
     int operator++(int);     
