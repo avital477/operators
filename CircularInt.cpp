@@ -2,182 +2,213 @@
 using namespace std;
 #include "CircularInt.hpp"
 
-// CircularInt&  CircularInt :: operator () (int x, int y){
-//         CircularInt ans (x,y);
-//         return ans;
-// }
+
+
+int CircularInt::nirmul(int x, int start, int end){
+    int xNormal=x;
+    
+    while(xNormal>end){
+         xNormal=xNormal-end+start-1;
+    }
+    
+    while(xNormal<start){
+        xNormal= xNormal+end-start+1;
+    }
+    
+    return xNormal;
+}
+
+CircularInt& CircularInt :: operator = ( const int& b){
+ this->current =nirmul( b, this->start, this->end);
+        return *this;
+}
+CircularInt& CircularInt :: operator = ( const CircularInt& b){
+ this->current =nirmul( b.current, this->start, this->end);
+        return *this;
+}
+
 
   CircularInt& CircularInt :: operator += (const int& b){
-        // clear();
-        // newVar(b);
-        this->current =this->current+ b;
-         if (this->current > this->end){
-                 this->current = this->current % (this->end - this->start +1);
-         }
-        // cout << &b << " hours after " << *this << endl;
+        this->current =nirmul(this->current+ b, this->start, this->end);
+        return *this;
+ }
+ CircularInt& CircularInt :: operator += (const CircularInt& b){
+     this->current =nirmul(this->current+ b.current, this->start, this->end);
         return *this;
  }
 
- CircularInt& CircularInt::operator-=(const int& other) {
-     this->current =this->current- other;
-         if (this->current > this->end){
-                 this->current = this->current % (this->end - this->start +1);
-         }
+CircularInt& CircularInt :: operator -= (const CircularInt& b){
+     this->current =nirmul(this->current- b.current, this->start, this->end);
+        return *this;
  }
+
+
+ CircularInt& CircularInt::operator-=(const int& other) {
+      this->current =nirmul(this->current-other.current, this->start, this->end);
+         return *this;
+ }
+
+
 CircularInt& CircularInt::operator*=(const int& mult) {
-    this->current=this->current*mult;
-   if (this->current > this->end){
-                 this->current = this->current % (this->end - this->start +1);
-   }
+    this->current=nirmul(this->current*mult,this->start, this->end);
     return *this;
 }
 
-
-
-const CircularInt operator / (const CircularInt& a,const int& div){ //לא עשיתי
-       CircularInt ans(a.start,a.end);
-    return ans;
-}
-
-
-
-const CircularInt operator - (const int a, const CircularInt& other){
-    CircularInt ans(other.start,other.end);
-    int temp= a-other.current;
-    if(temp<0)
-        temp= ans.end-(-temp%((ans.end - ans.start +1)));
-    ans.current=temp;
-     if (ans.current > ans.end){
-                 ans.current = ans.current % (ans.end - ans.start +1);
-         }
-    return ans;
-}
-//12-(-ans%12)
-
-const CircularInt operator + (const CircularInt& a, const CircularInt& b){
-    CircularInt ans(a.start,a.end);
-    ans.current=a.current+b.current;
-    return ans;
+CircularInt& CircularInt::operator*=(const CircularInt& other) {
+    this->current=nirmul(this->current*other.current,this->start, this->end);
+    return *this;
 }
 
 
 int CircularInt::operator++(int){
-    this->current=this->current+1;
-     if (this->current > this->end){
-                 this->current = this->current % (this->end - this->start +1);
-         }
+    this->current =nirmul(this->current+ 1, this->start, this->end);
     return this->current;
 }
 CircularInt& CircularInt::operator++(){
-    this->current=this->current+1;
-     if (this->current > this->end){
-                 this->current = this->current % (this->end - this->start +1);
-         }
+     this->current =nirmul(this->current+ 1, this->start, this->end);
     return *this;
 }
-// int CircularInt::operator--(int){}
-// CircularInt& CircularInt::operator--(){}
+
  int CircularInt::operator-() {
-     int ans= (this->end -this->current);
-     if (ans > this->end){
-                 ans = ans % (this->end - this->start +1);
-         }
+     int ans= nirmul(this->end -this->current,this->start, this->end);
      return ans;
  }
-// CircularInt& CircularInt::operator =(const CircularInt& other){}
-// CircularInt& CircularInt::operator =(const int& other){}
-// CircularInt& CircularInt::operator*=(const int& mult) {}
-// CircularInt& CircularInt::operator/=(const int& div) {}
-
-// CircularInt& CircularInt :: operator ++ (){
-//     this->current=this->current++;
-//     return *this;
-// }
 
 
 
-//  CircularInt& CircularInt :: operator + (const CircularInt &b){
-//      CircularInt ans;
-//     ans=this->current+b->current;
-//     return ans;
-//  }
+const CircularInt operator / (const CircularInt& a,const int& div){ 
+    if(div!=0){
+       CircularInt ans(a.start,a.end);
+       for(int i=ans.start; i<=ans.end; i++){
+           if((div*i)==a.current){
+                ans.current=i;
+                return ans;
+           }
+       }
+    }
+    string ans;
+    if(div==0)
+        ans="div=0";
+    else{
+        ans="There is no number x in {"+std::to_string(a.start)+","+std::to_string(a.end)+"} such that x*"+std::to_string(div)+"="+std::to_string(a.current); 
+    }
+    throw ans;
+}
+
+
+const CircularInt operator / (const int& a,const CircularInt& div){ 
+    if(div.current!=0){
+       CircularInt ans(div.start,div.end);
+       for(int i=ans.start; i<=ans.end; i++){
+           if((div.current*i)==a){
+                ans.current=i;
+                return ans;
+           }
+       }
+    }
+    string ans;
+    if(div.current==0)
+        ans="div=0";
+    else{
+        ans="There is no number x in {"+std::to_string(a)+","+std::to_string(a)+"} such that x*"+std::to_string(div.current)+"="+std::to_string(a); 
+    }
+    throw ans;
+}
+
+
+
+
+const CircularInt operator / (const CircularInt& a,const CircularInt& div){ 
+    if(div.current!=0){
+       CircularInt ans(a.start,a.end);
+       for(int i=ans.start; i<=ans.end; i++){
+           if((div.current*i)==a.current){
+                ans.current=i;
+                return ans;
+           }
+       }
+    }
+    string ans;
+    if(div.current==0)
+        ans="div=0";
+    else{
+        ans="There is no number x in {"+std::to_string(a.start)+","+std::to_string(a.end)+"} such that x*"+std::to_string(div.current)+"="+std::to_string(a.current); 
+    }
+    throw ans;
+}
+
+
+
 
  ostream& operator <<(ostream& os, const CircularInt& b){
      os<< b.current;
      return os;
  }
+
+ istream& operator <<(istream& os, const CircularInt& b){
+     int temp;
+     is>> temp;
+     b.current =nirmul( temp, b.start, b.end);
+     return is;
+ }
+
+
 const CircularInt operator+(const int a,const CircularInt& b){
-CircularInt ans(1,12);
+CircularInt ans(b.start,b.end);
+ans.current=ans.nirmul(a+b.current,ans.start,ans.end);
     return ans;
 }
 
-// CircularInt (const CircularInt& b){
-//         newVar();
-// }
-// ~CircularInt (const CircularInt& b){
-//         clear();
-// }
-// void clear (){
-        
-// }
-// void newVar(){
-
-// }
-
-// }
-// CircularInt CircularInt :: operator + (const int &b){
-       
-//         CircularInt ans;
-//         ans.current = this.current + b;
-//         // if (ans.x > b.end || ans.x < b.start){
-//         //         ans.x = x % (b.end - b.start +1);
-//         // }
-//         //  cout << x << " hours after " << &b << endl;
-//         return ans;
-// }
-// CircularInt& CircularInt :: operator *= (const CircularInt &b){
-//         int x = *this;
-//         x *= b.x;
-//         if (x > b.end || x < b.start){
-//                 x = x % (b.end - b.start +1);
-//         }
-        
-//         return *this;
-// }
-// CircularInt& CircularInt :: operator -= (const CircularInt &b){
-//         int x = *this;
-//         x -= b.x;
-//         if (x > b.end || x < b.start){
-//                 ans.x = x % (b.end - b.start +1);
-//         }
-//         return *this;
-// }
-// CircularInt CircularInt :: operator - (const CircularInt &b){
-//         int x = *this;
-//         CircularInt ans;
-//         ans.x = this->x - b.x;
-//         if (ans.x > b.end || ans.x < b.start){
-//                 ans.x = x % (b.end - b.start +1);
-//         }
-//         return ans;
-// }
+const CircularInt operator + (const CircularInt& a, const CircularInt& b){
+    CircularInt ans(a.start,a.end);
+    ans.current=ans.nirmul(a.current+b.current,ans.start,ans.end);
+    return ans;
+}
+const CircularInt operator+(const CircularInt& b,const int a){
+CircularInt ans(b.start,b.end);
+ans.current=ans.nirmul(a+b.current,ans.start,ans.end);
+    return ans;
+}
 
 
-// CircularInt& operator ++ (){ //++prefix
-//         int x = *this;
-//         ++x;
-//         if (x > b.end || x < b.start){
-//                 ans.x = x % (b.end - b.start +1);
-//         }
-//         return *this;
-// }
-// CircularInt operator ++ (int){//postfix++
-//         CircularInt ans = *this;
-        
-//         ++x;
-//         if (x > b.end || x < b.start){
-//                 ans.x = x % (b.end - b.start +1);
-//         }
-//         return ans;
-// }
+const CircularInt operator - (const int a, const CircularInt& other){
+    CircularInt ans(other.start,other.end);
+   
+    ans.current=ans.nirmul(a-other.current,other.start,other.end);
+    return ans;
+}
+
+const CircularInt operator - (const CircularInt& other, const int a){
+    CircularInt ans(other.start,other.end);
+    ans.current=ans.nirmul(other.current-a,other.start,other.end);
+    return ans;
+}
+
+const CircularInt operator - (const CircularInt& a, const CircularInt& b){
+    CircularInt ans(a.start,a.end);
+    ans.current=ans.nirmul(a.current-b.current,a.start,a.end);
+    return ans;
+}
+
+const CircularInt operator * (const CircularInt& a, const CircularInt& b){
+    CircularInt ans(a.start,a.end);
+    ans.current=ans.nirmul(a.current*b.current,a.start,a.end);
+    return ans;
+}
+
+const CircularInt operator * (const int& a, const CircularInt& b){
+    CircularInt ans(b.start,b.end);
+    ans.current=ans.nirmul(a*b.current,b.start,b.end);
+    return ans;
+}
+
+const CircularInt operator * (const CircularInt& a, const int& b){
+    CircularInt ans(a.start,a.end);
+    ans.current=ans.nirmul(b*a.current,a.start,a.end);
+    return ans;
+}
+
+
+
+
 

@@ -13,29 +13,45 @@ public:
         end = e;
         current = s;
     }
-    // CircularInt operator () (int x, int y);
+    CircularInt& operator = ( const int& b);
+    CircularInt& operator = ( const CircularInt& b);
      CircularInt&  operator += (const int &b);
+     CircularInt&  operator += (const CircularInt& b);
      CircularInt& operator-=(const int& other);
+     CircularInt&  operator -= (const CircularInt& b);
     CircularInt& operator*=(const int& mult);
+    CircularInt& operator*=(const CircularInt& other);
 
     int operator-();
     int operator++(int);     
      CircularInt& operator ++ ();
-     CircularInt&  operator + (const CircularInt &b);
-
-
     
-    // CircularInt operator - (const CircularInt &b);
-    
-    // CircularInt& operator ++ ();
-    // CircularInt operator ++ (int);
-   // };
-   // ~CircularInt();
+    int nirmul(int x, int start, int end);
 
 
 };
- ostream& operator <<(ostream& os, const CircularInt& b);
- const CircularInt operator+(const int a,const CircularInt& b);
-  const CircularInt operator / (const CircularInt& a,const int& div);
-  const CircularInt operator - (const int a,const CircularInt& other);
+
+istream& operator <<(istream& os, const CircularInt& b);
+ostream& operator <<(ostream& os, const CircularInt& b);
+
+
+const CircularInt operator / (const int& a,const CircularInt& div);
+const CircularInt operator / (const CircularInt& a,const int& div);
+const CircularInt operator / (const CircularInt& a,const CircularInt& div);
+
+
 const CircularInt operator + (const CircularInt& a,const CircularInt& b);
+const CircularInt operator + (const int a,const CircularInt& b);
+const CircularInt operator + (const CircularInt& b,const int a);
+
+const CircularInt operator - (const int a,const CircularInt& other);
+const CircularInt operator - (const CircularInt& other, const int a);
+const CircularInt operator - (const CircularInt& a, const CircularInt& b);
+
+
+
+
+
+
+
+
